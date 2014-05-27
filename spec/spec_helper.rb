@@ -34,6 +34,27 @@ RSpec.configure do |config|
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
 
+	# Capybaraのvisitがundefinedと言われたので、Capybara::DSLを追加
+	config.include Capybara::DSL
+	#
+	#
+	config.before(:all) do
+		Capybara.default_selector = :css
+		Capybara.javascript_driver = :webkit
+	end
+	config.before(:suite) do
+		DatabaseCleaner.strategy = :truncation
+	end
+
+	config.before(:each) do
+		DatabaseCleaner.start
+	end
+
+	config.after(:each) do
+		DatabaseCleaner.clean
+	end
+	# ここまで追加
+
   # Run specs in random order to surface order dependencies. If you find an
   # order dependency and want to debug it, you can fix the order by providing
   # the seed, which is printed after each run.
