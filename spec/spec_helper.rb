@@ -38,21 +38,21 @@ RSpec.configure do |config|
 	config.include Capybara::DSL
 	#
 	#
-	config.before(:all) do
-		Capybara.default_selector = :css
-		Capybara.javascript_driver = :webkit
-	end
-	config.before(:suite) do
-		DatabaseCleaner.strategy = :truncation
-	end
+	#config.before(:all) do
+	#	Capybara.default_selector = :css
+	#	Capybara.javascript_driver = :webkit
+	#end
+	#config.before(:suite) do
+	#	DatabaseCleaner.strategy = :truncation
+	#end
 
-	config.before(:each) do
-		DatabaseCleaner.start
-	end
+	#config.before(:each) do
+	#	DatabaseCleaner.start
+	#end
 
-	config.after(:each) do
-		DatabaseCleaner.clean
-	end
+	#config.after(:each) do
+	#	DatabaseCleaner.clean
+	#end
 	# ここまで追加
 
   # Run specs in random order to surface order dependencies. If you find an
